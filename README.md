@@ -7,4 +7,4 @@ It has 4 modules:
 - Settings.js handles mostly wallpaper stuff.
 - Tabs.js handle tab creation and removal
 - ToDo.js handle todo list and it's data
-- Load.js handle task loading, modification, saving and attachment CRUD.
+- Load.js handle specific task loading, modification, saving and attachment CRUD.
