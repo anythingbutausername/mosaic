@@ -1,0 +1,1052 @@
+/* Load the project's display and body fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Mukta+Vaani:wght@200;300;400;500;600;700;800&display=swap');
+ 
+:root {
+/* CSS HEX */
+--midnight-violet: #331832ff;
+--raspberry-red: #d81e5bff;
+--cinnabar: #f0544fff;
+--ash-grey: #c6d8d3ff;
+--papaya-whip: #fdf0d5ff;
+
+--background-color: #ffffff;
+}
+
+/* Use the readable body font throughout the page. */
+body {
+    font-family: 'Mukta Vaani', sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    isolation: isolate;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#wallpaper-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    pointer-events: none;
+}
+
+#wallpaper-layer.wallpaper-blurred {
+    filter: blur(8px);
+    transform: scale(1.03);
+}
+
+/* Use the decorative font for primary headings. */
+h1, h2, h3 {
+    font-family: 'Lora', sans-serif;
+}
+
+/* Keep smaller headings in the body font with a bold weight. */
+h4, h5, h6 {
+    font-family: 'Mukta Vaani', sans-serif;
+}
+
+/* Add space inside the main content area. */
+main {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.7fr);
+    grid-template-rows: auto auto minmax(0, 1fr); /* Add a dedicated row for the browser-like tab strip. */
+    gap: 14px;
+    height: 100%;
+    min-height: 0;
+    padding: 20px 20px 20px;
+}
+
+.mainArea {
+    display: block;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    width: 100%;
+}
+
+main > #message {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+main > section {
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+/* Give sections a dark red background and spacing from following sections. */
+section {
+    background: #ededed;
+    border: 3px solid #c4c4c4;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.settingsection {
+    border-radius: 0px;
+    background-color: rgb(223, 222, 222);
+    padding: 20px;
+    gap: 10px;
+}
+
+.settings-main {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    height: 100vh;
+    height: 100dvh;
+    padding: 20px 20px 100px;
+}
+
+.settings-main .settings-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+}
+
+.settings-main > section.settings-customization {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.settings-main > section.settings-about {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.settings-main h1,
+.settings-main h2,
+.settings-main h4,
+.settings-main p {
+    margin-top: 0;
+}
+
+.settings-customization input[type="color"] {
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 64px;
+    margin: 0;
+    padding: 4px;
+    width: min(100%, 180px);
+}
+
+.settings-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.settings-actions button {
+    margin: 0;
+}
+
+.settings-about {
+    justify-content: center;
+}
+
+.settings-about h2,
+.settings-about p {
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .settings-main {
+        align-content: start;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 20px 16px 100px;
+    }
+
+    .settings-main .settings-panel {
+        min-height: 0;
+    }
+
+    .settings-main > section.settings-customization {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .settings-main > section.settings-about {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .settings-about {
+        min-height: 180px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.topbar {
+    position: fixed;
+    top: 93%;
+    left: 86%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+
+    padding: 8px 16px;
+    width: fit-content;
+    max-width: calc(100% - 32px);
+
+    background: rgb(27, 27, 27);
+    border: 2px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+
+    box-shadow: 0px 9px 7px #071e2270, 0px 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 601px) {
+    .topbar {
+        top: auto;
+        right: auto;
+        bottom: 20px;
+        left: 20px;
+        transform: none;
+    }
+}
+
+.topbar > img:first-child {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+.topbar .menu-icon {
+    background: none;
+    border: none;
+    padding: 4px;
+    margin: 0;
+    width: 40px;
+    height: 35px;
+    border-radius: 0px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+.topbar .menu-button {
+    box-sizing: border-box;
+    background: none;
+    border: none;
+    padding: 7px;
+    margin: 0;
+    width: 37px;
+    height: 37px;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 37px;
+    cursor: pointer;
+    border: 1px solid #f0544f00;
+    transition: background-color 0.2s;
+}
+
+.topbar .menu-button:hover {
+    background: #f0544f38;
+    border: 1px solid #f0544f4d;
+    border-radius: 6px;
+}
+
+.topbar .menu-button[aria-current="page"] {
+    background: rgba(240, 84, 79, 0.745);
+    border: 1px solid #f0544f00;
+    box-shadow: 0px 9px 7px rgba(240, 84, 79, 0.323);
+}
+
+.topbar .menu-button img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.menu-buttonSection {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 16px;
+    background: #363636;
+    align-self: stretch;
+    margin: -8px -16px -8px 0;
+    padding-right: 16px;
+    border-radius: 0 10px 10px 0;
+}
+
+.search {
+    background: #000000;
+    color:white;
+    border: 2px solid #666666;
+    border-radius: 10px;
+    padding: 9px 9px;
+    display: flex;
+    height: 70%;
+    width: 100%
+}
+
+.todo-section {
+    padding: 4px 15px 15px;
+    display: flex;
+    flex-direction: row;
+    background: rgb(27, 27, 27);
+    border: 2px solid black;
+    border-radius: 14px;
+    box-shadow: 0px 9px 7px #071e2270, 0px 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.todo-section form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 8px;
+    width: 100%;
+}
+
+.todo-section form .todoHeaderText {
+    grid-column: 1 / -1;
+}
+
+.todo-section form label,
+.todo-section form input {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+
+.todo-section-input {
+    background:black;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.494);
+    transition: 0.2s;
+}
+
+.todo-section-input:hover {
+    background:rgb(34, 34, 34);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.494);
+    transition: 0.2s;
+}
+
+.todo-section-button {
+    background:rgb(201, 54, 54);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.494);
+    transition: 0.2s;
+}
+
+.todo-section-button:hover {
+    background:rgb(201, 54, 54);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.494);
+    transition: 0.2s;
+}
+
+.todo-section form .todo-section-button {
+    justify-self: start;
+    width: auto;
+}
+
+@media (min-width: 601px) and (max-width: 1100px) {
+    .todo-section form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 600px) {
+        .todo-section form {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .todo-section form .todo-section-button {
+            width: auto;
+        }
+    }
+
+    .todo-section form .todoHeaderText,
+    .todo-section form .todo-section-button {
+        grid-column: 1 / -1;
+    }
+
+    .todo-section form .todo-section-button {
+        width: 100%;
+    }
+}
+
+
+
+.list-browser {
+    box-sizing: border-box;
+    background: rgb(27, 27, 27);
+    border: 2px solid black;
+    grid-column: 1 / -1; 
+    grid-row: 2; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 8px 15px;
+    border-radius: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-shadow: 0px 9px 7px #071e2270, 0px 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+#todo-tabs { 
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: nowrap; 
+    align-items: center; 
+    gap: 6px;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+}
+
+#todo-tabs .list-tab-select,
+#todo-tabs .list-tab-close {
+    display: grid;
+    flex: 0 0 auto; /* Keep tab labels readable without shrinking. */
+    box-sizing: border-box; /* Include padding and border in the matching height. */
+    place-items: center;
+    height: 38px; /* Set the same explicit control height. */
+    margin: 0; /* Remove global button margin from tab alignment. */
+    border: 2px solid rgba(0, 0, 0, 0.252);
+}
+
+#todo-tabs .list-tab-select  {
+    max-width: none;
+    border-radius: 20px 0 0 20px;
+    background: rgba(238, 238, 238, 0.274);
+    padding: 0px 15px 0px;
+    color: white;
+    transition: 0.2s;
+}
+
+#todo-tabs .list-tab-select.list-tab-user {
+    max-width: none;
+    border-radius: 20px 0 0 20px;
+    background: rgba(238, 238, 238, 0.274);
+    padding: 0px 15px 0px;
+    color: white;
+    transition: 0.2s;
+}
+
+#todo-tabs .list-tab-select.list-tab-user:hover {
+    border: solid 2px white;
+    transition: 0.2s;
+}
+
+
+
+
+
+.list-tab {
+    flex-shrink: 0;
+}
+
+#todo-tabs .list-tab-select[aria-selected="true"] {
+    background: #f0544fff;
+    border-color: transparent;
+    padding: 0px 15px 0px;
+    color: white;
+}
+
+#todo-tabs .list-tab-select[aria-selected="true"]:hover {
+    background: #f0544fff;
+    border-color: transparent;
+    padding: 0px 15px 0px;
+    color: white;
+}
+
+#todo-tabs .list-tab-select.list-tab-default[aria-selected="true"]:hover {
+    background: #f0544fff;
+    border-color: transparent;
+    padding: 0px 15px 0px;
+    color: white;
+}
+
+#add-list {
+    box-sizing: border-box;
+    display: grid;
+    flex: 0 0 38px;
+    place-items: center;
+    height: 38px;
+    margin: 0;
+    padding: 0 10px;
+    background: #00000077;
+    border: 2px solid rgba(0, 0, 0, 0.426);
+    border-radius: 20px;
+    transition: 0.2s;
+}
+
+#add-list:hover {
+    background: #f0544f;
+    transition: 0.2s;
+}
+
+.list-tab { /* Pair each tab with its own close button. */
+    display: inline-flex; /* Keep the label and close affordance together. */
+    flex: 0 0 auto; /* Preserve tab width while scrolling. */
+    align-items: center; /* Align both controls vertically. */
+    min-width: 0; /* Prevent long names from widening the whole tab strip. */
+}
+
+#list-title {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-family: 'Lora', sans-serif;
+    background: none;
+    border: 2px solid #80808052;
+}
+
+#list-title:hover {
+    border: solid 2px rgba(7, 7, 7, 0.589);
+    background-color: #cecece;
+}
+
+#todo-tabs .list-tab-close { 
+    border-radius: 0px 20px 20px 0px;
+    padding: 8px 12px;
+    flex: 0 0 38px;
+    border-left: 0;
+    background: #000000b2;
+    transform: 0.2s;
+}
+#todo-tabs .list-tab-close img {
+    display: block;
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+}
+
+
+#todo-tabs .list-tab-close:hover { 
+    border-radius: 0px 20px 20px 0px;
+    padding: 8px 12px;
+    flex: 0 0 38px;
+    border-left: 0;
+    background: #000000f6;
+    transform: 0.2s;
+}
+
+#todo-tabs .list-tab-select.list-tab-default {
+    border-radius: 20px;
+    padding: 0px 15px 0px;
+}
+#todo-tabs .list-tab-select.list-tab-default:hover {
+    border: solid 2px white;
+}
+
+
+
+/* scrollbar stuff */
+
+.list-browser {
+    scrollbar-width: thin; 
+    scrollbar-color: #f0544f #d0d0d0;
+}
+
+.list-browser::-webkit-scrollbar {
+    height: 8px; /* Horizontal scrollbar height */
+}
+
+.list-browser::-webkit-scrollbar-track {
+    background: #d0d0d0;
+    border-radius: 8px;
+}
+
+.list-browser::-webkit-scrollbar-thumb {
+    background: #f0544f;
+    border-radius: 8px;
+}
+
+
+
+
+
+.todoHeaderText {
+    color: white;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.task-detail {
+    grid-column: 2;
+    grid-row: 3; /* Position task editing under the shared list-tab bar. */
+}
+
+main > section:not(.task-detail) { /* Place the task list beside its editor. */
+    grid-column: 1; /* Keep the main list in the first column. */
+    grid-row: 3; /* Align it beneath the shared tab strip. */
+}
+
+.task-detail form:not([hidden]) {
+    display: grid;
+    gap: 8px;
+    max-width: 560px;
+}
+
+.task-detail input:not([type="checkbox"]),
+.task-detail textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.task-detail textarea {
+    background-color: #cecece;
+    border: 2px solid rgba(7, 7, 7, 0.589);
+    border-radius: 6px;
+    font: inherit;
+    padding: 6px;
+}
+
+.task-attachments {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+
+.task-attachments > label {
+    font-weight: 700;
+    font-family: 'Mukta Vaani', sans-serif;
+}
+
+.task-attachments input[type="file"] {
+    max-width: 100%;
+    font-family: 'Mukta Vaani', sans-serif; ;
+    transition: 0.2s;
+}
+
+#task-attachment-input::file-selector-button {
+    font: inherit;
+    background-color: rgba(0, 0, 0, 0.22);
+    border: 2px solid rgba(0, 0, 0, 0.474);
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+#task-attachment-input::file-selector-button:hover {
+    background-color: #f0544f55;
+    transition: 0.2s;
+    border: 2px solid #f0544fe5;
+}
+
+#task-attachment-input:hover {
+    background-color: rgba(240, 84, 79, 0.242);
+    border: 2px solid rgba(0, 0, 0, 0.474);
+    border-radius: 5px;
+    color: black;
+    transition: 0.2s;
+}
+
+#task-attachment-list {
+    display: grid;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#task-attachment-list li {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.12);
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+    padding: 8px;
+}
+
+#task-attachment-list li > span {
+    flex: 1 1 180px;
+    overflow-wrap: anywhere;
+}
+
+.attachment-preview-button {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 0 0 56px;
+    height: 56px;
+    overflow: hidden;
+    padding: 0;
+    width: 56px;
+}
+
+.attachment-preview-button img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.attachment-preview-button:focus-visible,
+.task-image-preview button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.task-image-preview {
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.12);
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    display: grid;
+    flex: 1 1 100%;
+    gap: 8px;
+    min-width: 0;
+    padding: 8px;
+}
+
+.task-image-preview-header {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.task-image-preview-header span {
+    flex: 1 1 180px;
+    overflow-wrap: anywhere;
+}
+
+.task-image-preview img {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-height: 320px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+#task-attachment-list a,
+#task-attachment-list button {
+    flex: 0 0 auto;
+}
+
+#task-attachment-message {
+    margin: 0;
+}
+
+.task-completed-label {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+}
+
+.task-completed-label input {
+    margin: 0;
+}
+
+.task-detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+textarea.task-title-input {
+    box-sizing: border-box;
+    font-family: 'Lora';
+    font-size: 36px;
+    font-weight: bold;
+    background: none;
+    border: 2px solid #80808052;
+    line-height: 1.2;
+    min-height: 2.4em;
+    resize: vertical;
+}
+
+textarea.task-title-input:hover {
+    font-weight: bold;
+    border: solid 2px rgba(7, 7, 7, 0.589);
+    background-color: #cecece;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.task-date-input {
+    font-family: 'Mukta Vaani';
+    font-size: 16px;
+    background: none;
+    border: 2px solid #80808052;
+}
+
+.task-date-input:hover {
+    border: solid 2px rgba(7, 7, 7, 0.589);
+    background-color: #cecece;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+textarea.task-description-input {
+    font-family: 'Mukta Vaani';
+    font-size: 16px;
+    background: none;
+    border: 2px solid #80808052;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+textarea.task-description-input:hover {
+    border: solid 2px rgba(7, 7, 7, 0.589);
+    background-color: #cecece;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+#todo-table-body tr {
+    cursor: pointer;
+}
+
+#todo-table-body tr:focus-visible {
+    background-color: var(--cinnabar);
+}
+
+#todo-table-body tr.selected-task {
+    background-color: var(--cinnabar);
+}
+
+
+
+
+
+
+
+
+
+
+input {
+    background-color: #cecece;
+    padding: 6px;
+    font-family: "Mukta Vaani", sans-serif;
+    font-size: 16px;
+    border-radius: 6px;
+    border: solid 2px rgba(7, 7, 7, 0.589);
+    margin: 2px;
+}
+
+input[type="radio"] {
+    font-family: "Mukta Vaani", sans-serif;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #333;
+    border-radius: 20%;
+    accent-color: #00272bff;
+    padding: 1px;  
+}
+input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #333;
+    border-radius: 20%;
+    accent-color: #00272bff;
+    padding: 1px;
+}
+
+input[type="radio"]:checked {
+    background: #00272bff;
+    border-color: #00272bff;
+    box-shadow: inset 0 0 0 4px white;
+}
+input[type="checkbox"]:checked {
+  background: #00272bff;
+  border-color: #00272bff;
+  box-shadow: inset 0 0 0 4px white;
+}
+
+input[type="range"] {
+    background-color: red;
+}
+
+input[type="search"] {
+    width: 100%
+}
+
+
+
+button {
+    background:  rgb(82, 82, 82);
+    padding: 6px 10px;
+    font-family: "Mukta Vaani", sans-serif;
+    font-size: 16px;
+    border-radius: 16px;
+    border: solid 2px rgba(56, 56, 56, 0.986);
+    margin: 2px;
+    color: white;
+}
+
+button:hover {
+    background: #f0544fff;
+    border: solid 2px rgb(188, 61, 57);
+    cursor: pointer;
+    color: black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid black;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: #66666670;
+}
+
+/* Visually distinguish completed tasks after they are moved to the bottom. */
+.completed-task {
+    color: #3b3b3b;
+    background-color: #00800046;
+    text-decoration: line-through;
+}
+
+.completed-task td:first-child {
+    text-decoration: line-through;
+    
+}
+
+.completed-task:hover {
+    background-color: #008000be;
+    color: white;
+}
+
+.overdue-task {
+    background-color: rgba(238, 46, 49, 0.445);
+    color: black;
+    box-shadow: inset 4px 0 var(--racing-red);
+}
+
+.overdue-task:hover {
+    color: black;
+    background-color: rgba(238, 46, 49, 0.801);
+}
+
+@media (max-width: 1100px) {
+    #task-detail-empty img {
+        display: none;
+    }
+
+    #task-detail-empty:not([hidden]) {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100%;
+        text-align: center;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .settings-main {
+        padding: 88px 12px 100px;
+    }
+
+    .mainArea {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    main {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto minmax(55vh, auto) minmax(45vh, auto); /* Reserve separate mobile rows for tabs and both panels. */
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: auto;
+        padding: 88px 12px 12px;
+    }
+
+    main > #message,
+    .task-detail {
+        grid-column: 1;
+    }
+
+    .task-detail {
+        grid-row: auto; /* Let the editor follow the list vertically on mobile. */
+    }
+
+    .list-browser { /* Stack browser tabs above list actions on phones. */
+        flex-wrap: wrap; /* Wrap controls when the viewport is narrow. */
+        align-items: center; /* Keep wrapped controls vertically aligned. */
+    }
+
+    .topbar {
+        top: 30px;
+        right: auto;
+        left: 8px;
+        transform: none;
+        width: calc(100% - 16px);
+        max-width: none;
+        gap: 10px;
+        padding: 6px 10px;
+    }
+
+    .menu-buttonSection {
+        flex: 1 1 auto;
+        min-width: 0;
+        gap: 10px;
+        margin: -6px -10px -6px 0;
+        padding: 0 10px;
+    }
+
+    .topbar .search {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 6px;
+        width: 50%;
+    }
+}

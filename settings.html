@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Settings.js" defer></script>
+</head>
+<body>
+    <div id="wallpaper-layer"></div>
+
+    <!---Nav bar-->
+    <nav class="topbar" aria-label="Main navigation">
+
+        <img src="assets/icon-04.png" width="30" height="30" alt="Mosaic logo">
+
+        <div class="menu-buttonSection">
+
+            <a id="settings" class="menu-button" href="settings.html" aria-label="Settings" aria-current="page">
+                <img src="assets/Icon-01.png" width="35" height="35" alt="">
+            </a>
+
+            <a id="todo" class="menu-button" href="index.html" aria-label="To-do list">
+                <img src="assets/Icon-02.png" width="35" height="35" alt="">
+            </a>
+
+        </div>
+    </nav>
+
+    <!---Settings-->
+    <main class="settings-main">
+
+        <section class="settings-panel settings-customization">
+
+            <h1>Settings</h1>
+            <h4>CUSTOMIZATION</h4>
+
+            <label for="backgroundColor"><b>Change Background Color</b></label>
+            <input type="color" id="backgroundColor" value="#ffffff">
+
+            <div class="settings-actions">
+                <button id="applyColor" type="button">Apply</button>
+                <button id="reset" type="button">Reset Color</button>
+            </div>
+
+            <br>
+            <label for="wallpaper-upload"><b>Choose Wallpaper (experimental)</b></label>
+            <input type="file" id="wallpaper-upload" accept="image/*">
+            <button id="remove-wallpaper" type="button">Remove wallpaper</button>
+            <p>Take note: it doesn't allow for larger file sizes. It may also lag when navigating to other menus.<br>Please keep it under 1-2MB</p>
+            <label for="blur">
+                <input id="blur" name="wallpaper-blur" type="checkbox">
+                Toggle wallpaper blur
+            </label>
+        </section>
+
+        <section class="settings-panel settings-about">
+            <h2>More coming soon!</h2>
+            <p>Project Mosaic is one of my long-term JavaScript UI projects. <strong>This is just the start!</strong></p>
+        </section>
+
+    </main>
+</body>
+<script>
+    const savedColor = localStorage.getItem("backgroundColor");
+
+    if (savedColor !== null) {
+        document.documentElement.style.setProperty(
+            "--background-color",
+            savedColor
+        );
+        document.getElementById("backgroundColor").value = savedColor;
+    }
+</script>
+</html>
