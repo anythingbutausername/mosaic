@@ -1,5 +1,8 @@
 ![Banner Image](assets/banner.png)
-#Mosaic
+
+
+Mosaic
+
 Made by Joshua Singson
 
 Category: 
