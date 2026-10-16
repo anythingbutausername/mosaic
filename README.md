@@ -20,7 +20,7 @@ The code above offers a more complete (yet imperfect) description of how methods
 
 In my Programming Class's Project Guide, it meets all general instructions:
 - This is made individually with an original title.
-- The project has 7 <section>..s! 3 in Index.html and 4 at Settings.html. Although it does not have 5 pages, this is because of the project's scope.
+- The project has 7 sections (per HTML section method) = 3 in Index.html and 4 at Settings.html. Although it does not have 5 pages, this is because of the project's scope.
 - It utilises CSS, HTML and JS programming languages, and uses Google Font to import fonts.
 - It has interactive features such as forms for task creation and edit, validation for title and date, lots of event handling, DOM, async functions and DOM.
 - Mosaic is easy to use and all features work properly on my end. 
