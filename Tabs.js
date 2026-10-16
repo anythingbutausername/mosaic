@@ -51,6 +51,7 @@ function renderTabs() {
         //create the span and button elements.
         const tab = document.createElement("span");
         const select = document.createElement("button");
+        
 
         //set attributes to tab
         tab.className = "list-tab";
@@ -63,6 +64,9 @@ function renderTabs() {
             : "list-tab-select list-tab-user";
         select.setAttribute("aria-selected", String(list.id === activeListId));
         select.addEventListener("click", () => switchList(list.id));
+        
+        tab.className = "list-tab";
+        tab.setAttribute("aria-selected", String(list.id === activeListId));
 
         //adds the tab into the page.
         tab.append(select);
