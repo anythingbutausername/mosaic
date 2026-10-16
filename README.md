@@ -28,6 +28,20 @@ Mosaic is a **to-do list web application** that utilises **LocalStorage and Inde
 - HTML and CSS
 - Google Fonts API
 
+## IPT Lessons Used
+- DOM
+- Async functions
+- Set Timeouts
+- Try-catch-finally
+- Promises
+- Lots and lots of event handling
+
+The project also has:
+- Forms
+- Validations
+- Buttons and Event Handling
+- Dynamic Content for attachment lists, task status, image previews, list tabs and wallpaper implementation
+
 ### Access it here:
 https://anythingbutausername.github.io/mosaic/settings.html
 
