@@ -5,7 +5,30 @@ Category:
 Productivity, Task Management
 
 Project Description:
-Mosaic is a to-do list web application that utilises LocalStorage and IndexedDB to store configuration, task and attachment data. It's made to store user task in-device with personalisation capabilities. 
+Mosaic is a **to-do list web application** that utilises **LocalStorage and IndexedDB** to store configuration, task and attachment data. It's made to store user task in-device with personalisation capabilities. 
+
+Features:
+- Add, remove or modify tasks
+- See Task Status based on date collected
+- Live per-minute task updates (for updating tasks status from due today -> overdue)
+- Add, remove or modify To Do Lists per tabs above the task sections
+- Add, remove or preview attachments / files
+- Change background color
+- Add wallpaper + wallpaper blur
+- Import and export user data for portability and safe keeping
+
+Technologies Used:
+- Localhost and indexedDB
+- JSON
+- JavaScript
+- HTML and CSS
+- Google Fonts API
+
+Access it here:
+https://anythingbutausername.github.io/mosaic/settings.html
+
+
+---- More details below! ----
 
 It has 5 modules:
 - Settings.js handles wallpaper and background color customisation. 
@@ -14,19 +37,18 @@ It has 5 modules:
 - Port.js handle both import and export functions.
 - Load.js handle specific task loading, modification, saving and attachment CRUD.
 
+2 HTML Files:
+- Index.html contains to-do lists, tabs, and task CRUD functionalities
+- Settings.html contains settings organised per category and methods.
 
-The code above offers a more complete (yet imperfect) description of how methods work. 
+1 CSS File:
+- style.css offers near-skeuomorphic styling for the site
 
+2 other files:
+- Documentation provides screenshots of sections and pages
+- Assets store my very own designed logos and icons
 
-In my Programming Class's Project Guide, it meets all general instructions:
-- This is made individually with an original title.
-- The project has 7 sections (per HTML section method) = 3 in Index.html and 4 at Settings.html. Although it does not have 5 pages, this is because of the project's scope.
-- It utilises CSS, HTML and JS programming languages, and uses Google Font to import fonts.
-- It has interactive features such as forms for task creation and edit, validation for title and date, lots of event handling, DOM, async functions and DOM.
-- Mosaic is easy to use and all features work properly on my end. 
-
-Access it here:
-https://anythingbutausername.github.io/mosaic/settings.html
+The code provided offers a more complete (yet imperfect) description of how methods work. 
 
 Although originally made for my Integrative Programming final project, this is also a part of my greater long-term initiative to implement technology solutions alongside my passions, which includes UI design (albeit imperfect). Because of that, expect this project to further evolve in the future. 
 
