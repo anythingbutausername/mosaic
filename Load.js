@@ -12,7 +12,7 @@ const taskDetailElements = {
     date: document.querySelector("#load-date"),
     description: document.querySelector("#load-description"),
     completed: document.querySelector("#load-completed"),
-    message: document.querySelector("#task-edit-message"),
+    message: document.querySelector("#taskStatus"),
     saveButton: document.querySelector("#save-task-button"),
     cancelButton: document.querySelector("#cancel-task-button"),
     deleteButton: document.querySelector("#delete-task-button"),
@@ -20,7 +20,6 @@ const taskDetailElements = {
     noDelete: document.querySelector("#noDelete"),
     attachmentInput: document.querySelector("#task-attachment-input"),
     attachmentList: document.querySelector("#task-attachment-list"),
-    attachmentMessage: document.querySelector("#task-attachment-message")
 };
 
 const confirmDialog = document.querySelector("#DeleteConfirmation");
@@ -413,8 +412,20 @@ function showImageAttachmentPreview(attachment, thumbnailButton) {
 
     //Initialize close button
     closeButton.type = "button";
-    closeButton.textContent = "Close preview";
+    closeButton.className = "attachment-action-button";
+    closeButton.title = `Close Preview of ${attachment.name}`; //Text hover
     closeButton.setAttribute("aria-label", `Close preview of ${attachment.name}`);
+
+    const closeIcon = document.createElement("img"); //create a new image 
+    closeIcon.src = "assets/icon-remove.png"; //source
+    closeIcon.alt = ""; //Alt
+    closeIcon.width = 12; //Width of the icon
+    closeIcon.height = 12; //Height of the icon
+    closeIcon.style.objectFit = "contain"; //object fit CSS 
+    closeButton.append(closeIcon); //Adds close icon
+
+
+
 
     //Give it a purpose in life. unlike me. char. malayo pa sweden nhak
     closeButton.addEventListener(
@@ -483,8 +494,10 @@ function renderAttachmentList() {
         //Create these elements
         const item = document.createElement("li");
         const name = document.createElement("span");
-        const download = document.createElement("a");
+        const download = document.createElement("button");
+        const downloadIcon = document.createElement("img");
         const remove = document.createElement("button");
+        const removeIcon = document.createElement("img");
 
         //if attachment.type is string and starts with an image,
         if (typeof attachment.type === "string" && attachment.type.startsWith("image/")) {
@@ -529,21 +542,19 @@ function renderAttachmentList() {
 
         //If pending, show "pending save"
         if (attachment.pending) {
-            name.textContent += " - pending save";
+            name.textContent += " - Save Pending";
         }
 
-        //This juan is for the download link. Link for now, ill make it into a button later! 
-        download.textContent = "Download";
+        //download button attributes
+        download.type = "button"; //button type
+        download.className = "attachment-action-button"; //CSS Class name
+        download.title = `Download ${attachment.name}`; //Text hover
+        download.setAttribute("aria-label", `Download ${attachment.name}`); //Accessibility label
+        downloadIcon.src = "assets/icons-05.png"; //image
+        downloadIcon.alt = ""; //alt text
+        download.append(downloadIcon); //add the download button to the page.
 
-        //make the URL initially #
-        download.href = "#";
-
-        //give it an event listener that when clicked...
-        download.addEventListener("click", (event) => {
-
-            //stops the browser's default behavior
-            event.preventDefault();
-
+        download.addEventListener("click", () => {
             //get the URL
             const objectUrl = URL.createObjectURL(attachment.blob);
             attachmentObjectUrls.add(objectUrl);
@@ -567,10 +578,14 @@ function renderAttachmentList() {
             }, 1000);
         });
 
-        //Set attributes to the remove button
-        remove.type = "button";
-        remove.textContent = "Remove";
-        remove.setAttribute("aria-label", `Remove ${attachment.name}`);
+        //remove button attributes
+        remove.type = "button"; //button type
+        remove.className = "attachment-action-button"; //CSS Class name
+        remove.title = `Remove ${attachment.name}`; //Text hover
+        remove.setAttribute("aria-label", `Remove ${attachment.name}`); //Accessibility label
+        removeIcon.src = "assets/icons-06.png"; //image
+        removeIcon.alt = ""; //alt text
+        remove.append(removeIcon); //add the button to da page
 
         //Give it an event listener that
         remove.addEventListener("click", () => {
@@ -587,8 +602,8 @@ function renderAttachmentList() {
             renderAttachmentList();
 
             //show this message when a new one is added without any save
-            taskDetailElements.attachmentMessage.textContent =
-                "Attachment change will be applied when you save.";
+            taskDetailElements. message.textContent =
+                "Changes will be applied when you save.";
         });
         //add these items per item
         item.append(name, download, remove);
@@ -600,7 +615,7 @@ function renderAttachmentList() {
 async function loadTaskAttachments(task, loadVersion) {
 
     //keep the task detail elements empty
-    taskDetailElements.attachmentMessage.textContent = "";
+    taskDetailElements. message.textContent = "";
 
     //try by:
     try {
@@ -625,7 +640,7 @@ async function loadTaskAttachments(task, loadVersion) {
         if (loadVersion === attachmentLoadVersion && selectedTask === task) {
 
             //it tells you that you can't load attatchments from this browser.
-            taskDetailElements.attachmentMessage.textContent =
+            taskDetailElements. message.textContent =
                 "Could not load attachments from this browser.";
         }
         //and return da error.
@@ -682,7 +697,7 @@ async function displayTaskDetails(task) {
     taskDetailElements.emptyPrompt.hidden = Boolean(task);
     taskDetailElements.form.hidden = !task;
     taskDetailElements.message.textContent = "";
-    taskDetailElements.attachmentMessage.textContent = "";
+    taskDetailElements. message.textContent = "";
     taskDetailElements.attachmentInput.value = "";
 
     //renders the attatchment list.
@@ -826,7 +841,7 @@ async function saveTaskDetails(event) {
 
         //update HTML elements
         taskDetailElements.attachmentInput.value = "";
-        taskDetailElements.attachmentMessage.textContent = "";
+        taskDetailElements. message.textContent = "";
         taskDetailElements.message.textContent = "Changes saved.";
 
         //keep the message empty
@@ -848,7 +863,7 @@ async function saveTaskDetails(event) {
             //if there's a rollback error, give an error message that changes could not be rolled back.
             } catch (rollbackError) {
                 console.error("Unable to roll back attachment changes!", rollbackError);
-                taskDetailElements.attachmentMessage.textContent =
+                taskDetailElements. message.textContent =
                     "Task save failed, and attachment changes could not be rolled back. I'm sorry!";
             }
         }
@@ -996,12 +1011,6 @@ taskDetailElements.body.addEventListener("keydown", (event) => {
 //if the form is submitted, save the details
 taskDetailElements.form.addEventListener("submit", saveTaskDetails);
 
-//if the form was given an input,
-taskDetailElements.form.addEventListener("input", () => {
-
-    //clear stale success/validation text
-    taskDetailElements.message.textContent = "";
-});
 
 //when the completed todo checkbox is triggered or changed
 taskDetailElements.completed.addEventListener("change", () => {
@@ -1029,7 +1038,7 @@ taskDetailElements.attachmentInput.addEventListener("change", () => {
     renderAttachmentList();
 
     //if there is an attachment, show this message. 
-    taskDetailElements.attachmentMessage.textContent = files.length
+    taskDetailElements. message.textContent = files.length
         ? `${files.length} attachment${files.length === 1 ? "" : "s"} ready to save.`
         : "";
         //1 attachment ready to save
