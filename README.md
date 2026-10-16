@@ -1,4 +1,4 @@
-(assets/banner.png)
+![Banner Image](assets/banner.png)
 #Mosaic
 Made by Joshua Singson
 
