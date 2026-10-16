@@ -31,6 +31,7 @@ function RenderToDos() {
         const completedCell = document.createElement("td");
         const titleCell = document.createElement("td");
         const dateCell = document.createElement("td");
+        const statusCell = document.createElement("td");
         const checkbox = document.createElement("input");
         //Date
         const dueDate = document.createElement("time");
@@ -65,16 +66,25 @@ function RenderToDos() {
         //If completed, add it into completed task list.
         if (todo.completed) {
             row.classList.add("completed-task");
+            statusMessage.textContent = "Completed!";
+            statusCell.classList.add("complete-status");
         } else if (dueAt < now) {
             row.classList.add("overdue-task");
-            statusMessage.textContent = " | Task overdue!";
+            statusMessage.textContent = "Overdue";
+            statusCell.classList.add("overdue-status");
         } else if (dueAt.toDateString() === now.toDateString()) {
-            statusMessage.textContent = " | Due today";
+            statusMessage.textContent = "Due today";
+            statusCell.classList.add("today-status");
+        } else {
+            statusMessage.textContent = "Pending";
+            statusCell.classList.add("task-status");          
         }
+
         //Add these stuff on the website.
         completedCell.append(checkbox);
-        dateCell.append(dueDate, statusMessage);
-        row.append(completedCell, titleCell, dateCell);
+        dateCell.append(dueDate);
+        statusCell.append(statusMessage);
+        row.append(completedCell, titleCell, dateCell, statusCell);
         todoTableBody.append(row);
     }
 
@@ -150,9 +160,13 @@ async function completionTodo(todo, completed) {
             todo.completed = previousValue;
             window.TaskDetails.syncCompletion(todo, previousValue);
             RenderToDos();
-            message.textContent = "Could not complete the task. Error at line 105.";
+            message.textContent = "completionTodo() Error: Could not complete the task.";
             console.error("unable to update todo task!", error);
         }
+        
+        setTimeout(() => {
+            message.textContent = "";
+        }, 10000);
 }
 
 // Remove a task from the list, restoring it if saving the change fails.
@@ -187,15 +201,19 @@ async function deleteTodo(todo) {
             } catch (restoreError) {
                 console.error("Unable to restore task attachments!", restoreError);
                 message.textContent =
-                    "Task deletion failed, and its attachments could not be restored.";
+                    "deleteTodo() Error: Task deletion failed, and its attachments could not be restored.";
             }
         }
         RenderToDos();
         if (!message.textContent) {
-            message.textContent = "Could not delete the task.";
+            message.textContent = "deleteTodo() Error: Could not delete the task. ";
         }
         console.error("unable to delete todo task!", error);
     }
+
+            setTimeout(() => {
+            message.textContent = "";
+        }, 10000);
 }
 
 //Validate and add a submitted task, then save and refresh
@@ -231,11 +249,15 @@ async function addTodo(event) {
     //If it fails, remove the last tasks entered and add an error message.
     } catch(error) {
         todos.pop();
-        message.textContent = "Could not save the task. Error at line 105.";
+        message.textContent = "addTodo() Error: Could not save the task.";
         console.error("Unable to save to todo list!", error);
     } finally {
         addButton.disabled = false;
     }
+
+            setTimeout(() => {
+            message.textContent = "";
+        }, 10000);
 }
 
 //ToggleAddMenu = Show or hide the add task form when "Add Task" is clicked.
@@ -254,7 +276,7 @@ form.addEventListener("submit", addTodo);
 
 // Show a clear message if loading from local storage fails.
 loadTodos().catch((error) => {
-    message.textContent = "Could not load saved tasks!";
+    message.textContent = "toggleAddMenu() Error: Could not load saved tasks!";
     console.error("Unable to load todo list!", error);
 });
 
