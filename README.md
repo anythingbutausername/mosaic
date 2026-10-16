@@ -54,6 +54,6 @@ The code provided offers a more complete (yet imperfect) description of how meth
 
 Although originally made for my Integrative Programming final project, this is also a part of my greater long-term initiative to implement technology solutions alongside my passions, which includes UI design (albeit imperfect). Because of that, expect this project to further evolve in the future. 
 
-Version: Alpha 2
+Version: 0.1
 
 Thanks for reading!
