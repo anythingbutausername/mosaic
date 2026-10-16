@@ -22,7 +22,7 @@ Mosaic is a **to-do list web application** that utilises **LocalStorage and Inde
 - Import and export user data for portability and safe keeping
 
 ## Technologies Used:
-- Localhost and indexedDB
+- LocalStorage and indexedDB
 - JSON
 - JavaScript
 - HTML and CSS
