@@ -3,11 +3,11 @@
  
 :root {
 /* CSS HEX */
---midnight-violet: #331832ff;
---raspberry-red: #d81e5bff;
---cinnabar: #f0544fff;
---ash-grey: #c6d8d3ff;
---papaya-whip: #fdf0d5ff;
+--shadow-grey: #161925ff;
+--twilight-indigo: #23395bff;
+--rich-cerulean: #406e8eff;
+--powder-blue: #8ea8c3ff;
+--frozen-water: #cbf7edff;
 
 --background-color: #ffffff;
 }
@@ -191,17 +191,18 @@ section {
     }
 }
 
+/*PAPER TEXTURE!*/
+
+.texture {
+    background-image: url("assets/papertexture.jpg");
+    background-repeat: repeat;
+    background-size: 300px 300px;
+}
 
 
 
-
-
-
-
-
-
-
-
+/*MENU BAR SECTION*/
+/*Menu bar (name like that because it was intended to be a top nav bar*/
 .topbar {
     position: fixed;
     top: 93%;
@@ -217,13 +218,15 @@ section {
     width: fit-content;
     max-width: calc(100% - 32px);
 
-    background: rgb(27, 27, 27);
-    border: 2px solid black;
+    background: linear-gradient(to bottom, rgb(7, 8, 12), #1e2335);
+    border: 3px solid black;
     border-radius: 10px;
     box-sizing: border-box;
     z-index: 1000;
 
-    box-shadow: 0px 9px 7px #071e2270, 0px 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: inset 0 2px 8px #3e4975, /*Light*/
+        inset 0 -4px 8px rgb(0, 0, 0), /*Dark*/
+        0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
 }
 
 @media (min-width: 601px) {
@@ -236,6 +239,7 @@ section {
     }
 }
 
+/*logo*/
 .topbar > img:first-child {
     box-sizing: border-box;
     width: 30px;
@@ -245,6 +249,7 @@ section {
     object-fit: contain;
 }
 
+/*mosaic icon*/
 .topbar .menu-icon {
     background: none;
     border: none;
@@ -257,6 +262,8 @@ section {
     place-items: center;
     cursor: pointer;
 }
+
+/*menu button*/
 .topbar .menu-button {
     box-sizing: border-box;
     background: none;
@@ -270,22 +277,39 @@ section {
     place-items: center;
     flex: 0 0 37px;
     cursor: pointer;
-    border: 1px solid #f0544f00;
+    border: 2px solid #f0544f00;
     transition: background-color 0.2s;
 }
 
+/*when hovered*/
 .topbar .menu-button:hover {
-    background: #f0544f38;
-    border: 1px solid #f0544f4d;
+    background: linear-gradient(to bottom, rgb(7, 8, 12), #1e2335);
+    border: 2px solid #ffffff8c;
     border-radius: 6px;
+    transition: 0.2s
 }
 
+/*when hovered*/
+.topbar .menu-button:active {
+    background: linear-gradient(to bottom, rgb(7, 8, 12), #1e2335);
+    border: 2px solid #ffffff8c;
+    border-radius: 6px;
+    box-shadow: inset 0 -2px 8px #b3dfff32, /*Light*/
+        inset 0 2px 4px rgba(137, 137, 137, 0.715), /*Dark*/
+        0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/;
+    transition: 0.2s
+}
+
+/*when active*/
 .topbar .menu-button[aria-current="page"] {
-    background: rgba(240, 84, 79, 0.745);
-    border: 1px solid #f0544f00;
-    box-shadow: 0px 9px 7px rgba(240, 84, 79, 0.323);
+    border: 2px solid #ffffff8c;
+    box-shadow: inset 0 -2px 8px #b3dfff32, /*Light*/
+        inset 0 2px 4px rgba(137, 137, 137, 0.715), /*Dark*/
+        0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/;
+        transition: 0.2s;
 }
 
+/*button image*/
 .topbar .menu-button img {
     display: block;
     width: 100%;
@@ -293,40 +317,60 @@ section {
     object-fit: contain;
 }
 
+/*secondary section where the buttons are*/
 .menu-buttonSection {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 8px;
     padding: 0 16px;
-    background: #363636;
+    background: rgba(0, 0, 0, 0.459);
     align-self: stretch;
     margin: -8px -16px -8px 0;
     padding-right: 16px;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 7px 7px 0;
 }
 
-.search {
-    background: #000000;
-    color:white;
-    border: 2px solid #666666;
-    border-radius: 10px;
-    padding: 9px 9px;
-    display: flex;
-    height: 70%;
-    width: 100%
+
+/*TODO HEADER SECTION*/
+/*list names*/
+#list-title {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-family: 'Lora', sans-serif;
+    background: none;
+    border: 2px solid #80808052;
 }
 
+/*list name on hover*/
+#list-title:hover {
+    border: solid 2px rgba(7, 7, 7, 0.589);
+    background-color: #cecece;
+}
+
+
+/*ADD TASK SECTION*/
+/*todo section itself*/
 .todo-section {
     padding: 4px 15px 15px;
     display: flex;
     flex-direction: row;
-    background: rgb(27, 27, 27);
-    border: 2px solid black;
+    background: linear-gradient(to bottom, rgb(7, 8, 12), #1e2335);
+    border: 3px solid black;
     border-radius: 14px;
-    box-shadow: 0px 9px 7px #071e2270, 0px 1px 3px rgba(0, 0, 0, 0.06);
+
+
+    box-shadow: inset 0 2px 8px #3e4975, /*Light*/
+            inset 0 -4px 8px rgb(0, 0, 0), /*Dark*/
+            0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
 }
 
+/*form positioning*/
 .todo-section form {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
@@ -334,8 +378,10 @@ section {
     width: 100%;
 }
 
+/*header task, labels, texts*/
 .todo-section form .todoHeaderText {
     grid-column: 1 / -1;
+    font-weight: bold;
 }
 
 .todo-section form label,
@@ -345,33 +391,50 @@ section {
     min-width: 0;
 }
 
+
+/*Inputs*/
 .todo-section-input {
-    background:black;
+    background: linear-gradient(to bottom, rgb(7, 8, 12), #161925ff);
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.494);
     transition: 0.2s;
 }
+
 
 .todo-section-input:hover {
-    background:rgb(34, 34, 34);
+    background:linear-gradient(to bottom, rgb(49, 56, 83), #161925ff);
     color: white;
-    border: 2px solid rgba(255, 255, 255, 0.494);
+    border: 2px solid rgba(255, 255, 255, 0.708);
     transition: 0.2s;
 }
-
+ 
+/*Add button*/
 .todo-section-button {
-    background:rgb(201, 54, 54);
+    background:#23395bff;
     color: white;
-    border: 2px solid rgba(255, 255, 255, 0.494);
+    border: 2px solid rgba(255, 255, 255, 0.313);
     transition: 0.2s;
 }
 
+/*Add task button hover*/
 .todo-section-button:hover {
-    background:rgb(201, 54, 54);
+    background:#406e8eff;
     color: white;
-    border: 2px solid rgba(255, 255, 255, 0.494);
+    border: 2px solid rgba(255, 255, 255, 0.731);
     transition: 0.2s;
 }
+
+/*Add task button active*/
+.todo-section-button:active {
+    background:#406e8eff;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.731);
+    transition: 0.2s;
+    box-shadow: inset -0px -2px 2px #ffffff1f,  /*Light*/
+            inset 0px 2px 2px #000000a0, /*Dark*/
+            0 1px 4px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
+}
+
 
 .todo-section form .todo-section-button {
     justify-self: start;
@@ -404,10 +467,11 @@ section {
 }
 
 
-
+/*DA REAL TOP BAR NA MAY TABS STUFF SECTION*/
+/*List of ToDo Browser*/
 .list-browser {
     box-sizing: border-box;
-    background: rgb(27, 27, 27);
+    background: linear-gradient(to bottom, rgb(7, 8, 12), #1e2335);
     border: 2px solid black;
     grid-column: 1 / -1; 
     grid-row: 2; 
@@ -419,9 +483,12 @@ section {
     border-radius: 10px;
     overflow-x: auto;
     overflow-y: hidden;
-    box-shadow: 0px 9px 7px #071e2270, 0px 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: inset 0 2px 8px #2f3758, /*Light*/
+        inset 0 -4px 8px rgb(0, 0, 0), /*Dark*/
+        0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
 }
 
+/*Ttabs section*/
 #todo-tabs { 
     display: flex;
     flex: 0 0 auto;
@@ -433,6 +500,7 @@ section {
     padding: 0;
 }
 
+/*tab select and close button*/
 #todo-tabs .list-tab-select,
 #todo-tabs .list-tab-close {
     display: grid;
@@ -441,61 +509,111 @@ section {
     place-items: center;
     height: 38px; /* Set the same explicit control height. */
     margin: 0; /* Remove global button margin from tab alignment. */
-    border: 2px solid rgba(0, 0, 0, 0.252);
 }
 
-#todo-tabs .list-tab-select  {
-    max-width: none;
-    border-radius: 20px 0 0 20px;
-    background: rgba(238, 238, 238, 0.274);
-    padding: 0px 15px 0px;
-    color: white;
-    transition: 0.2s;
-}
-
+/*User-made tabs*/
 #todo-tabs .list-tab-select.list-tab-user {
+    position: relative;
+    z-index: 0;
     max-width: none;
     border-radius: 20px 0 0 20px;
-    background: rgba(238, 238, 238, 0.274);
+    background: linear-gradient(to bottom, #131520, #2b334d);
     padding: 0px 15px 0px;
     color: white;
     transition: 0.2s;
+    border:none;
 }
 
+/*unselected - hover*/
 #todo-tabs .list-tab-select.list-tab-user:hover {
-    border: solid 2px white;
+    border: solid 2px rgba(255, 255, 255, 0.639);
+    background: linear-gradient(to bottom, #25283d, #384264);
     transition: 0.2s;
+    border:none;
 }
 
-
-
-
-
+/*list tab button clusters*/
 .list-tab {
     flex-shrink: 0;
 }
 
+/*selected tabs*/
 #todo-tabs .list-tab-select[aria-selected="true"] {
-    background: #f0544fff;
-    border-color: transparent;
+    background:#406e8eff;
     padding: 0px 15px 0px;
     color: white;
+    border:none;
 }
 
+/*hover*/
 #todo-tabs .list-tab-select[aria-selected="true"]:hover {
-    background: #f0544fff;
-    border-color: transparent;
+    background:#355a75;
+    padding: 0px 15px 0px;
+    color: white;
+    border:none;
+}
+
+/*clicked*/
+#todo-tabs .list-tab-select[aria-selected="true"]:active {
+    background:#355a75;
+    padding: 0px 15px 0px;
+    border:none;
+    color: white;
+        box-shadow: inset 0 -2px 8px #b3dfff32, /*Light*/
+            inset 0 1px 4px rgb(0, 0, 0), /*Dark*/
+            0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
+}
+
+
+/*normal*/
+
+/*default and hover*/
+#todo-tabs .list-tab-select.list-tab-default {
+    position: relative;
+    z-index: 0;
+    border-radius: 20px;
+    padding: 0px 15px 0px;
+    background: linear-gradient(to bottom, #131520, #2b334d);
+}
+#todo-tabs .list-tab-select.list-tab-default:hover {
+    background: linear-gradient(to bottom, #25283d, #384264);
+    color: white;
+    transition: 0.2s;
+}
+
+/*clicked*/
+#todo-tabs .list-tab-select.list-tab-default:active {
+    background: linear-gradient(to bottom, #25283d, #384264);
+    color: white;
+    transition: 0.2s;
+    box-shadow: inset 0 -2px 8px #b3dfff32, /*Light*/
+        inset 0 1px 4px rgb(0, 0, 0), /*Dark*/
+        0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
+}
+
+/*selected*/
+#todo-tabs .list-tab-select.list-tab-default[aria-selected="true"] {
+    background:#406e8eff;
     padding: 0px 15px 0px;
     color: white;
 }
 
 #todo-tabs .list-tab-select.list-tab-default[aria-selected="true"]:hover {
-    background: #f0544fff;
-    border-color: transparent;
+    background:#355a75;
     padding: 0px 15px 0px;
     color: white;
 }
 
+#todo-tabs .list-tab-select.list-tab-default[aria-selected="true"]:active {
+    background:#355a75;
+    padding: 0px 15px 0px;
+    color: white;
+    box-shadow: inset 0 -2px 8px #b3dfff32, /*Light*/
+        inset 0 1px 4px rgb(0, 0, 0), /*Dark*/
+        0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
+}
+
+/*Add button*/
 #add-list {
     box-sizing: border-box;
     display: grid;
@@ -504,73 +622,106 @@ section {
     height: 38px;
     margin: 0;
     padding: 0 10px;
-    background: #00000077;
-    border: 2px solid rgba(0, 0, 0, 0.426);
+    background: linear-gradient(to bottom, #131520, #2b334d);
+    border: 2px solid #000000;
     border-radius: 20px;
     transition: 0.2s;
 }
 
 #add-list:hover {
-    background: #f0544f;
     transition: 0.2s;
 }
 
-.list-tab { /* Pair each tab with its own close button. */
-    display: inline-flex; /* Keep the label and close affordance together. */
-    flex: 0 0 auto; /* Preserve tab width while scrolling. */
-    align-items: center; /* Align both controls vertically. */
-    min-width: 0; /* Prevent long names from widening the whole tab strip. */
+#add-list:active {
+    transition: 0.2s;
+    border-color: white;
+    box-shadow: inset 0 -2px 8px #b3dfff32, /*Light*/
+        inset 0 2px 4px rgba(137, 137, 137, 0.715), /*Dark*/
+        0 5px 10px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
 }
 
-#list-title {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100%;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    font-family: 'Lora', sans-serif;
-    background: none;
-    border: 2px solid #80808052;
+#todo-tabs .list-tab {
+    position: relative;
+    z-index: 1;
+    border: 2px solid #000000;
+    transition: 0.2s;
 }
 
-#list-title:hover {
-    border: solid 2px rgba(7, 7, 7, 0.589);
-    background-color: #cecece;
+#todo-tabs .list-tab:hover {
+    border: solid 2px rgba(255, 255, 255, 0.639);
+    transition: 0.2s;
+}
+#todo-tabs .list-tab:active {
+    border: solid 2px rgb(255, 255, 255);
+        box-shadow: inset 0 -2px 8px #b3dfff32, /*Light*/
+        inset 0 2px 4px rgba(137, 137, 137, 0.715), /*Dark*/
+        0 5px 20px rgba(203, 203, 203, 0.468); /*Shadow beneath*/
+        transition: 0.2s;
 }
 
+#todo-tabs .list-tab-select,
+#todo-tabs .list-tab-close {
+    border: none;
+    outline: none;
+}
+
+#todo-tabs .list-tab[aria-selected="true"],
+#todo-tabs .list-tab[aria-selected="true"]:hover {
+    border-color: #fff;
+}
+
+/*clustering*/
+.list-tab { 
+    display: inline-flex; 
+    flex: 0 0 auto; 
+    align-items: center;
+    min-width: 0; 
+    border-radius: 21px;
+    border: 2px solid #374263;
+    transition: border-color 0.2s;
+}
+
+.list-tab:hover,
+.list-tab:focus-within {
+    border-color: #dff1fdf1;
+}
+
+
+/*close button*/
 #todo-tabs .list-tab-close { 
     border-radius: 0px 20px 20px 0px;
-    padding: 8px 12px;
+    padding: 8px 16px;
     flex: 0 0 38px;
     border-left: 0;
-    background: #000000b2;
+    background: linear-gradient(to bottom, #050609, #161724);
     transform: 0.2s;
 }
+
 #todo-tabs .list-tab-close img {
     display: block;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     object-fit: contain;
 }
 
-
 #todo-tabs .list-tab-close:hover { 
     border-radius: 0px 20px 20px 0px;
-    padding: 8px 12px;
+    padding: 8px 16px;
     flex: 0 0 38px;
     border-left: 0;
     background: #000000f6;
     transform: 0.2s;
+    background: linear-gradient(to top, #670404, #820404);
 }
 
-#todo-tabs .list-tab-select.list-tab-default {
-    border-radius: 20px;
-    padding: 0px 15px 0px;
-}
-#todo-tabs .list-tab-select.list-tab-default:hover {
-    border: solid 2px white;
+#todo-tabs .list-tab-close:active { 
+    border-radius: 0px 20px 20px 0px;
+    padding: 8px 16px;
+    flex: 0 0 38px;
+    border-left: 0;
+    background: #000000f6;
+    transform: 0.2s;
+    background: linear-gradient(to top, #320202, #570303);
 }
 
 
@@ -583,7 +734,7 @@ section {
 }
 
 .list-browser::-webkit-scrollbar {
-    height: 8px; /* Horizontal scrollbar height */
+    height: 12px; /* Horizontal scrollbar height */
 }
 
 .list-browser::-webkit-scrollbar-track {
@@ -605,6 +756,9 @@ section {
     font-size: 15px;
     margin-bottom: 2px;
 }
+
+
+/*Task detail*/
 
 .task-detail {
     grid-column: 2;
@@ -637,59 +791,152 @@ main > section:not(.task-detail) { /* Place the task list beside its editor. */
     padding: 6px;
 }
 
+/* Attachments */
+
 .task-attachments {
     display: grid;
     gap: 8px;
     min-width: 0;
 }
 
+/*task attachment input*/
 .task-attachments > label {
     font-weight: 700;
     font-family: 'Mukta Vaani', sans-serif;
 }
 
+/*outer "no files selected*/
 .task-attachments input[type="file"] {
     max-width: 100%;
     font-family: 'Mukta Vaani', sans-serif; ;
     transition: 0.2s;
-}
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 10px #0000003d;
+    margin: 0;
 
-#task-attachment-input::file-selector-button {
-    font: inherit;
-    background-color: rgba(0, 0, 0, 0.22);
-    border: 2px solid rgba(0, 0, 0, 0.474);
-    border-radius: 5px;
-    color: black;
-    padding: 10px;
-    transition: 0.2s;
-}
-
-#task-attachment-input::file-selector-button:hover {
-    background-color: #f0544f55;
-    transition: 0.2s;
-    border: 2px solid #f0544fe5;
 }
 
 #task-attachment-input:hover {
-    background-color: rgba(240, 84, 79, 0.242);
-    border: 2px solid rgba(0, 0, 0, 0.474);
+    background-color: rgba(35, 57, 91, 0.345);
+    border: 2px solid #36588bb8;
     border-radius: 5px;
     color: black;
     transition: 0.2s;
 }
 
+#task-attachment-input:active {
+    background-color: rgba(35, 57, 91, 0.345);
+    border: 2px solid #c0d9ff;
+    border-radius: 5px;
+    color: black;
+    transition: 0.2s;
+    box-shadow: inset 0 -2px 8px #a2c7ff3b, /*Light*/
+    inset 0 2px 4px #3f67a3, /*Dark*/
+    0 5px 20px rgba(203, 203, 203, 0.468); /*Shadow beneath*/
+}
+
+/*browse... button*/
+#task-attachment-input::file-selector-button {
+    font: inherit;
+    font-weight: bold;
+    background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(35, 35, 35));
+    border: 2px solid rgba(0, 0, 0, 0.615);
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    transition: 0.2s;
+    box-shadow: inset -0px 2px 2px #ffffff1f, /*Light*/
+            inset 0px -2px 2px rgba(0, 0, 0, 0.628), /*Dark*/
+            0 1px 4px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
+}
+
+/*hover and active*/
+#task-attachment-input::file-selector-button:hover {
+    background: linear-gradient(to bottom, rgb(53, 53, 53), rgb(62, 62, 62));
+    transition: 0.2s;
+    border: 2px solid #ffffff;
+    color: white;
+}
+
+#task-attachment-input::file-selector-button:active {
+    background: linear-gradient(to bottom, #23395bff, #3f67a3) ;
+    transition: 0.2s;
+    border: 2px solid #c0d9ff;
+    color: white;
+    box-shadow: inset 0 -2px 8px #63a1ff3b, /*Light*/
+    inset 0 2px 4px #3f67a3, /*Dark*/
+    0 5px 20px rgba(203, 203, 203, 0.468); /*Shadow beneath*/
+}
+
+
+
+/* Delete, Download Buttons*/
+#task-attachment-list .attachment-action-button {
+    align-items: center;
+    display: inline-flex;
+    gap: 6px;
+    justify-content: center;
+    min-height: 38px;
+    border-radius: 4px;
+    background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(35, 35, 35));
+}
+
+#task-attachment-list .attachment-action-button img {
+    height: 20px;
+    object-fit: contain;
+    width: 20px;
+}
+
+#task-attachment-list .attachment-action-button:hover {
+    color: white;
+    background: linear-gradient(to bottom, rgb(53, 53, 53), rgb(62, 62, 62));
+    border-color: white;
+}
+
+#task-attachment-list .attachment-action-button:active {
+    color: white;
+    background: linear-gradient(to bottom, #23395bff, #3f67a3) ;
+    border-color: white;
+    box-shadow: inset 0 -2px 8px #63a1ff3b, /*Light*/
+    inset 0 2px 4px #3f67a3, /*Dark*/
+    0 5px 20px rgba(203, 203, 203, 0.468); /*Shadow beneath*/
+}
+
+
+#task-attachment-list .attachment-action-button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/*attachment list container*/
 #task-attachment-list {
     display: grid;
     gap: 6px;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0px;
 }
 
+/*attachment items*/
 #task-attachment-list li {
     align-items: center;
     background: rgba(0, 0, 0, 0.12);
-    border: 2px solid rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(0, 0, 0, 0.615);
+    box-shadow: inset 0 0 10px #0000003d;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+    padding: 8px;
+    transition: 0.2s;
+}
+
+#task-attachment-list li:hover {
+    align-items: center;
+    background-color: rgba(35, 57, 91, 0.345);
+    border: 2px solid #36588b;
+    box-shadow: inset 0 0 10px #0000003d;
     border-radius: 6px;
     display: flex;
     flex-wrap: wrap;
@@ -703,9 +950,10 @@ main > section:not(.task-detail) { /* Place the task list beside its editor. */
     overflow-wrap: anywhere;
 }
 
+/*attachment preview button*/
 .attachment-preview-button {
     background: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.35);
+    border: 3px solid rgb(1, 1, 1);
     border-radius: 4px;
     cursor: pointer;
     flex: 0 0 56px;
@@ -715,6 +963,7 @@ main > section:not(.task-detail) { /* Place the task list beside its editor. */
     width: 56px;
 }
 
+/*image*/
 .attachment-preview-button img {
     display: block;
     height: 100%;
@@ -722,16 +971,21 @@ main > section:not(.task-detail) { /* Place the task list beside its editor. */
     width: 100%;
 }
 
+/*focus-visible and hover*/
 .attachment-preview-button:focus-visible,
 .task-image-preview button:focus-visible {
     outline: 3px solid #2563eb;
     outline-offset: 2px;
 }
 
+.attachment-preview-button:hover {
+    border: 3px solid rgb(255, 255, 255);
+}
+
 .task-image-preview {
     box-sizing: border-box;
     background: rgba(0, 0, 0, 0.12);
-    border: 2px solid rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(0, 0, 0, 0.687);
     border-radius: 6px;
     display: grid;
     flex: 1 1 100%;
@@ -772,6 +1026,8 @@ main > section:not(.task-detail) { /* Place the task list beside its editor. */
     margin: 0;
 }
 
+
+/*task form elements*/
 .task-completed-label {
     align-items: center;
     display: flex;
@@ -783,9 +1039,10 @@ main > section:not(.task-detail) { /* Place the task list beside its editor. */
 }
 
 .task-detail-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2px;
+    width: 100%;
 }
 
 textarea.task-title-input {
@@ -813,6 +1070,7 @@ textarea.task-title-input:hover {
     font-size: 16px;
     background: none;
     border: 2px solid #80808052;
+    margin: 0;
 }
 
 .task-date-input:hover {
@@ -838,21 +1096,43 @@ textarea.task-description-input:hover {
     transition: 0.2s;
 }
 
+/*table properties section*/
+
 #todo-table-body tr {
     cursor: pointer;
 }
 
 #todo-table-body tr:focus-visible {
-    background-color: var(--cinnabar);
+    cursor: pointer;
 }
 
 #todo-table-body tr.selected-task {
-    background-color: var(--cinnabar);
+    background: rgb(94, 188, 255);
+    box-shadow: inset 0 0 10px #0000003d;
 }
 
+/*Task Status for easy tracking*/
+.complete-status {
+    background-color: #007a02;
+    color: white;
+    font-weight: bold;
+}
 
+.overdue-status {
+    background-color: #6a0707;
+    color: white;
+    font-weight: bold;
+}
 
+.today-status {
+    background-color: #1e56ef;
+    color: white;
+}
 
+.task-status {
+    background-color: #6f6f6f;
+    color: white;
+}
 
 
 
@@ -910,22 +1190,40 @@ input[type="search"] {
 
 
 
+
+
+
+
+/*Button design inspired from ania kubow's tiktok about premium buttons*/
+
 button {
-    background:  rgb(82, 82, 82);
     padding: 6px 10px;
     font-family: "Mukta Vaani", sans-serif;
     font-size: 16px;
     border-radius: 16px;
-    border: solid 2px rgba(56, 56, 56, 0.986);
     margin: 2px;
     color: white;
+    border: solid 2px black;
+    background: #161925ff;
+    box-shadow: inset -0px 2px 2px rgba(252, 252, 252, 0.286), /*Light*/
+        inset 0px -2px 2px rgba(0, 0, 0, 0.659), /*Dark*/
+        0 3px 7px rgba(0, 0, 0, 0.189) /*Shadow beneath*/;
+    transition:0.2s;
 }
 
 button:hover {
-    background: #f0544fff;
-    border: solid 2px rgb(188, 61, 57);
+    background: rgb(60, 68, 100);
     cursor: pointer;
-    color: black;
+    color: white;
+}
+
+button:active {
+    background: rgb(60, 68, 100);
+    cursor: pointer;
+    color: white; 
+        box-shadow: inset -0px -2px 2px #ffffff1f,  /*Light*/
+            inset 0px 2px 2px #000000a0, /*Dark*/
+            0 3px 7px rgba(0, 0, 0, 0.189) /*Shadow beneath*/;
 }
 
 table {
@@ -937,6 +1235,70 @@ th, td {
     padding: 10px;
     border-bottom: 1px solid black;
     text-align: left;
+}
+
+/*button states*/
+.importantButton {
+    background: #406e8eff;
+    border: 2px solid black;
+    color: white;
+    font-weight: bold;
+    box-shadow: inset -0px 2px 2px rgba(252, 252, 252, 0.142), /*Light*/
+        inset 0px -2px 2px rgba(0, 0, 0, 0.659), /*Dark*/
+        0 3px 7px rgba(0, 0, 0, 0.189) /*Shadow beneath*/;
+    transition: 0.2s;
+}
+
+.unimportantButton {
+    background: #161925ff;
+    border: 2px solid rgba(0, 0, 0, 0.194);
+    color: white;
+    box-shadow: inset -0px 2px 2px rgba(252, 252, 252, 0.286), /*Light*/
+        inset 0px -2px 2px rgba(0, 0, 0, 0.659), /*Dark*/
+        0 3px 7px rgba(0, 0, 0, 0.189) /*Shadow beneath*/;
+    transition: 0.2s;
+}
+
+.dangerButton {
+    background: var(--cinnabar);
+    border-color: var(--cinnabar);
+    color: white;
+}
+
+button.importantButton:hover {
+    background: #5189b2;
+    border: 2px solid black;
+    color: white;
+}
+
+button.importantButton:active {
+    background: #5189b2;
+    border: 2px solid rgba(0, 0, 0, 0.946);
+    color: white;
+    box-shadow: inset -0px -2px 2px #ffffff1f,  /*Light*/
+            inset 0px 2px 2px #000000a0, /*Dark*/
+            0 3px 7px rgba(0, 0, 0, 0.189) /*Shadow beneath*/;
+}
+
+button.unimportantButton:hover {
+    background: rgb(60, 68, 100);
+    border: solid 2px black;
+    color: #ffffff;
+}
+
+button.unimportantButton:active {
+    background: rgb(60, 68, 100);
+    border: solid 2px black;
+    color: #ffffff;
+    box-shadow: inset -0px -2px 2px #ffffff1f,  /*Light*/
+            inset 0px 2px 2px #000000a0, /*Dark*/
+            0 3px 7px rgba(0, 0, 0, 0.189) /*Shadow beneath*/;
+}
+
+button.dangerButton:hover {
+    background: rgb(220, 107, 104);
+    border: solid 2px white;
+    color: white;
 }
 
 tr:hover {
@@ -1049,4 +1411,204 @@ tr:hover {
         padding: 6px;
         width: 50%;
     }
+}
+
+dialog {
+    border-radius: 20px;
+}
+
+.settings-subsection {
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+.settings-subsubsection {
+    background-color: rgba(0, 0, 0, 0.083);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.settings-divider {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    border: 2px solid var(--shadow-grey);
+}
+
+.BadConfirmation {
+    box-sizing: border-box;
+    width: min(90vw, 480px);
+    max-width: 90vw;
+    padding: 24px;
+    background-color: white;
+    color: black;
+    border: 4px solid red;
+        box-shadow: inset -0px 2px 10px #ff111182, /*Light*/
+            inset 0px -2px 10px #ff111182, /*Dark*/
+            0 1px 4px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
+}
+
+.BadConfirmation::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+}
+
+.confirmation-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    margin-top: 24px;
+}
+
+.confirmation-actions button {
+    width: 100%;
+    margin: 0;
+}
+
+.BadConfirmation .confirmation-actions .unimportantButton {
+    background: #23395b;
+    border-color: #161925;
+    color: white;
+}
+
+.BadConfirmation .confirmation-actions .unimportantButton:hover {
+    background: #406e8e;
+    border-color: #161925;
+    color: white;
+}
+
+.BadConfirmation .confirmation-actions .dangerButton {
+    background: #b42318;
+    border-color: #7a1710;
+    color: white;
+}
+
+.BadConfirmation .confirmation-actions .dangerButton:hover {
+    background: #8f1d14;
+    border-color: #5f120d;
+    color: white;
+}
+
+.BadConfirmation .confirmation-actions button:focus-visible {
+    outline: 3px solid #161925;
+    outline-offset: 3px;
+}
+
+.status {
+    padding: 10px;
+    background-color: rgba(17, 17, 17, 0.19);
+    border: 2px gray solid;
+    border-radius: 12px;
+    margin-top:10px;
+}
+
+.status:empty {
+    display: none;
+}
+
+.notification {
+    box-sizing: border-box;
+    position: fixed;
+
+    top: 18%;
+    left: 50%;
+    z-index: 1000;
+    width: min(40vw, 500px);
+    min-height: 20px;
+
+    margin: 0;
+
+    padding: 16px;
+    transform: translate(-50%, -50%);
+    display: grid;
+
+    align-items: center;
+
+    justify-items: center;
+
+    text-align: center;
+
+    color: white;
+    background: linear-gradient(to bottom, #340101, #840101);
+    border: 4px solid #fe0202cf;
+    border-radius: 20px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+    transition: 0.2s;
+}
+
+.notification:empty {
+    display: none;
+    transition: 0.2s;
+}
+
+
+
+
+
+
+
+/*browse... default button*/
+input[type="file"]::file-selector-button {
+    font: inherit;
+    font-weight: bold;
+    background: linear-gradient(to bottom, rgb(23, 23, 23), rgb(35, 35, 35));
+    border: 2px solid rgba(0, 0, 0, 0.615);
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    transition: 0.2s;
+    box-shadow: inset -0px 2px 2px #ffffff1f, /*Light*/
+            inset 0px -2px 2px rgba(0, 0, 0, 0.628), /*Dark*/
+            0 1px 4px rgba(0, 0, 0, 0.468) /*Shadow beneath*/
+}
+
+
+input[type="file"]::file-selector-button:hover {
+    background: linear-gradient(to bottom, rgb(53, 53, 53), rgb(62, 62, 62));
+    transition: 0.2s;
+    border: 2px solid #ffffff;
+    color: white;
+}
+
+input[type="file"]::file-selector-button:active {
+    background: linear-gradient(to bottom, #23395bff, #3f67a3) ;
+    transition: 0.2s;
+    border: 2px solid #c0d9ff;
+    color: white;
+    box-shadow: inset 0 -2px 8px #63a1ff3b, /*Light*/
+    inset 0 2px 4px #3f67a3, /*Dark*/
+    0 5px 20px rgba(203, 203, 203, 0.468); /*Shadow beneath*/
+}
+
+
+/*file input default*/
+input[type="file"] {
+    max-width: 100%;
+    font-family: 'Mukta Vaani', sans-serif; ;
+    transition: 0.2s;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 10px #0000003d;
+    margin: 0;
+
+}
+
+input[type="file"]:hover {
+    background-color: rgba(35, 57, 91, 0.345);
+    border: 2px solid #36588bb8;
+    border-radius: 5px;
+    color: black;
+    transition: 0.2s;
+}
+
+input[type="file"]:active {
+    background-color: rgba(35, 57, 91, 0.345);
+    border: 2px solid #c0d9ff;
+    border-radius: 5px;
+    color: black;
+    transition: 0.2s;
+    box-shadow: inset 0 -2px 8px #a2c7ff3b, /*Light*/
+    inset 0 2px 4px #3f67a3, /*Dark*/
+    0 5px 20px rgba(203, 203, 203, 0.468); /*Shadow beneath*/
 }
