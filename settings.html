@@ -6,6 +6,7 @@
     <title>Settings</title>
     <link rel="stylesheet" href="style.css">
     <script src="Settings.js" defer></script>
+    <script src="Port.js" defer></script>
 </head>
 <body>
     <div id="wallpaper-layer"></div>
@@ -31,36 +32,102 @@
     <!---Settings-->
     <main class="settings-main">
 
-        <section class="settings-panel settings-customization">
+        <section class="settings-panel settings-customization texture">
 
             <h1>Settings</h1>
+
+            <!--Customization Section-->
+            <section class="settings-subsection">
             <h4>CUSTOMIZATION</h4>
-
-            <label for="backgroundColor"><b>Change Background Color</b></label>
-            <input type="color" id="backgroundColor" value="#ffffff">
-
+            <hr class="settings-divider">
+            <br>
+            
+            <div class="settings-subsubsection">
+            <!--Background Color-->
+            <label for="backgroundColor"><b>Change Background Color</b></label><br>
+            <p>Change the background color of this application or click "reset color" to reset the background to white.</p>
+            <input type="color" id="backgroundColor" value="#ffffff"><br><br>
+            
+            <!--Apply/Reset Color-->
             <div class="settings-actions">
                 <button id="applyColor" type="button">Apply</button>
                 <button id="reset" type="button">Reset Color</button>
             </div>
-
+            </div>
+            
             <br>
-            <label for="wallpaper-upload"><b>Choose Wallpaper (experimental)</b></label>
-            <input type="file" id="wallpaper-upload" accept="image/*">
-            <button id="remove-wallpaper" type="button">Remove wallpaper</button>
-            <p>Take note: it doesn't allow for larger file sizes. It may also lag when navigating to other menus.<br>Please keep it under 1-2MB</p>
+
+            
+            <!--Experimental Wallpaper Feature-->
+            <div class="settings-subsubsection">
+            <label for="wallpaper-upload"><b>Choose Wallpaper (experimental)</b></label><BR>
+                <p>Please take note that it doesn't allow for larger file sizes. It may also lag when navigating to other menus.<br>Please keep it under 1-2MB</p>
+            <input type="file" id="wallpaper-upload" accept="image/*"><BR><br>
+            
+            <div class="settings-subsubsection">
+            <p><b>Wallpaper Settings</b></p>
+            
+            <!--Experimental Wallpaper Blur-->
             <label for="blur">
                 <input id="blur" name="wallpaper-blur" type="checkbox">
                 Toggle wallpaper blur
             </label>
+
+            <!--Remove Wallpaper-->
+            <br><br>
+            <button id="remove-wallpaper" type="button">Remove wallpaper</button>
+            </div>
+            </div>
+
+            </section>
+
+            <!--Backup Section-->
+            <section class="settings-subsection">
+            <h4>BACKUP</h4>
+            <hr class="settings-divider">
+            <br>
+
+            <p class="status" id="backupmessage" role="status" aria-live="polite"></p>
+
+            <p>Export your list, attatchments and settings to a downloadable JSON file</p>
+            <button id="export-backup" type="button">Export all data</button><br><br>
+            <br>
+
+            <p>Import your list, attatchments and settings from an instance of Mosaic<BR><B>IMPORTING WILL REPLACE ALL YOUR DATA AND IS NOT REVERSABLE.</B></p> 
+            <input id="import-backup-file" type="file" accept=".json,application/json" hidden>
+            <button id="import-backup" type="button">Import Backup</button><br><br>
+            </section>
         </section>
 
-        <section class="settings-panel settings-about">
-            <h2>More coming soon!</h2>
-            <p>Project Mosaic is one of my long-term JavaScript UI projects. <strong>This is just the start!</strong></p>
+        <!--About Section-->
+        <section class="settings-panel settings-about texture">
+            <center>
+            <img 
+                src="assets/mosaic.png" 
+                width="250" 
+                height="46" 
+                alt="To-do">
+            </center>
+            <h2>Version 0.1</h2>
+            <p>Mosaic is my first open-source project. See the repository here!</p>
+            <center><a href="https://github.com/anythingbutausername/mosaic">Go to the GitHub Repository</a></center>
+
         </section>
 
     </main>
+
+    <!--Import confirmation dialog-->
+    <dialog class="BadConfirmation" id="import-confirmation" aria-labelledby="import-confirmation-title">
+
+        <center><h2 id="import-confirmation-title">Replace Mosaic data?</h2></center>
+        <center><p>Importing this backup will replace all Mosaic data on this device. <b>This is not reversable!</b></p></center>
+
+        <div class="confirmation-actions">
+            <button class="importantButton" id="cancel-import" type="button">Cancel</button>
+            <button class="DangerButton" id="confirm-import" type="button">Import backup</button>
+        </div>
+
+    </dialog>
 </body>
 <script>
     const savedColor = localStorage.getItem("backgroundColor");
