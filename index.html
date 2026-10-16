@@ -3,137 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do</title>
-    <link rel="stylesheet" href="style.css">
+    <title>To Do | Mosaic</title>
     <script src="Tabs.js" defer></script>
     <script src="ToDo.js" defer></script>
     <script src="Load.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-<!--Nav Bar!-->
- <nav class="topbar">
-
-    <img src="assets/icon-04.png" width="30" height="30" alt="Mosaic logo">
-
-    <div class="menu-buttonSection">
-
-    <a id="settings" class="menu-button" href="settings.html" aria-label="Settings">
-        <img src="assets/Icon-01.png" width="35" height="35" alt="To-do">
-    </a>
-
-    <a id="todo" class="menu-button" aria-label="To-do list" aria-current="page">
-        <img src="assets/Icon-02.png" width="35" height="35" alt="Settings">
-    </a>
-
-
-    </div>
-    
-</nav>
-
-<body>
-<div id="wallpaper-layer"></div>
-    <div class="mainArea">
-    <main>
-        <!-- Keep status messages across the full application grid. -->
-        <p id="message" role="status" aria-live="polite"></p>
-        <!-- The browser-like strip sits above both task panels. -->
-        <div class="list-browser">
-            <button id="add-list" type="button" aria-label="Add list">
-                <img src="assets/icon-add.png" width="15" height="15" alt="To-do">
-            </button> <!-- Add a list at the tab strip's left edge. -->
-            <nav id="todo-tabs" aria-label="To-do lists"></nav> <!-- Tabs.js renders each list and its close control here. -->
-        </div> <!-- End shared list-tab strip. -->
-        
-        <section>
-
-
-        <h1><input id="list-title" type="text" aria-label="List title" maxlength="28" value="My Tasks"></h1>
-
-        <section class="todo-section " id="todo-section">
-
-        <!-- Task creation, now with date and time!-->
-        <form id="todo-form">
-
-            <p class="todoHeaderText">CREATE TASK</p>
-            <label>
-                <span class="visually-hidden">Task</span>
-                <input class="todo-section-input" id="todo-title" name="title" type="text" placeholder="Task name here." required>
-            </label>
-
-            <label>
-                <span class="visually-hidden">Due date and time</span>
-                <input class="todo-section-input" id="todo-date" name="date" type="datetime-local" required>
-            </label>
-
-            <button class="todo-section-button" id="add-button" type="submit">Add task</button>
-
-            
-        </form>
-        </section>
-
-
-            <table id="todo-table" aria-label="To-do tasks table">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Task</th>
-                        <th scope="col">Due Date</th>
-                    </tr>
-                </thead>
-                <tbody id="todo-table-body"></tbody>
-            </table>            
-        </section>
-
-    <section class="task-detail" id="task-detail" aria-labelledby="task-detail-heading">
-        <!---these are hidden-->
-
-        <div id="task-detail-empty">
-            <center><img src="assets/SelectTask.png" width="450" height="300" alt="To-do"></center>
-            <center><h2>Select a task to view and edit details</h2></center>
-        </div>
-
-        <!---these shows when something is selected-->
-        <form id="task-edit-form" hidden>
-
-            <textarea id="load-title" class="task-title-input" name="title" rows="2" placeholder="Task title" required></textarea>
-
-            <input id="load-date" class="task-date-input" name="date" type="datetime-local" required>
-
-            <textarea id="load-description" class="task-description-input" name="description" rows="4" placeholder="Add details about this task"></textarea>
-
-            <div class="task-attachments">
-                <label for="task-attachment-input">Attachments</label>
-                <input id="task-attachment-input" type="file" multiple>
-                <ul id="task-attachment-list" aria-label="Task attachments"></ul>
-                <p id="task-attachment-message" role="status" aria-live="polite"></p>
-            </div>
-
-            <label class="task-completed-label" for="load-completed">
-
-                <input id="load-completed" name="completed" type="checkbox">
-                Mark as Completed
-
-            </label>
-
-            <div class="task-detail-actions">
-                <button id="save-task-button" type="submit">Save</button>
-                <button id="cancel-task-button" type="button">Cancel</button>
-                <button id="delete-task-button" type="button">Delete</button>
-            </div>
-            <p id="task-edit-message" role="status" aria-live="polite"></p>
-        </form>
-    </section>
-    </main> 
-    </div>
-
-    <dialog id="DeleteConfirmation">
-        <p>Are you sure you wanna delete this task?</p>
-        <p><b>This is not reversable!</b></p>
-        <button id="yesDelete">Yes</button>
-        <button id="noDelete">No</button>
-    </dialog>
-    <!-- Visually hide labels while keeping them available to screen readers. -->
-    <style>
+<style>
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -145,13 +21,240 @@
             white-space: nowrap;
             border: 0;
         }
-    </style>
+</style>
+
+<!--Nav Bar-->
+<nav class="topbar">
+    
+    <!--Logo-->
+    <img src="assets/icon-04.png" width="30" height="30" alt="-">
+
+    <!--Icons Panel-->
+    <div class="menu-buttonSection">
+
+    <!--Settings Button-->
+    <a id="settings" class="menu-button" href="settings.html" aria-label="Settings">
+        <img src="assets/Icon-01.png" width="35" height="35" alt="To-do">
+    </a>
+
+    <!--To Do Button-->
+    <a id="todo" class="menu-button" aria-label="To-do list" aria-current="page">
+        <img src="assets/Icon-02.png" width="35" height="35" alt="Settings">
+    </a>
+
+    </div>
+</nav>
+
+<body>
+
+    <!--Wallpaper Layer-->
+    <div id="wallpaper-layer"></div>
+    <div class="mainArea">
+
+        <main>
+
+            <!--TEMPORARY - MESSAGE-->
+            <p id="message" role="status" class="notification" aria-live="polite"></p>
+
+            <!-- List Browser for Todo Tabs-->
+             <div class="list-browser">
+                
+                <!--Add tab button-->
+                <button id="add-list" type="button" aria-label="Add new list">
+                    <img src="assets/icon-add.png" width="15" height="15" alt="+">
+                </button>
+
+                <!--List menu-->
+                <nav id="todo-tabs" aria-label="Your To-do Lists"></nav>
+             </div>
+
+
+
+
+             <!--To do section-->
+             <section class="texture">
+
+                <!--Title-->
+                <h1><input 
+                    id="list-title" 
+                    type="text" 
+                    aria-label="List title" 
+                    maxlength="28" 
+                    value="My Tasks">
+                </h1>
+
+                <!--Add section-->
+                <section class="paper todo-section" id="todo-section">
+
+                    <!--Form-->
+                    <form id="todo-form">
+                    
+                    <!--Header-->
+                    <p class="todoHeaderText">CREATE TASK</p>
+
+                    <!--Task Name-->
+                    <label>
+                        <span class="visually-hidden">Task</span>
+                        <input 
+                            class="todo-section-input" 
+                            id="todo-title" 
+                            name="title" 
+                            type="text" 
+                            placeholder="Enter Task Name" 
+                            required>
+                    </label>
+
+                    <!--Date and Time-->
+                    <label>
+                        <span class="visually-hidden">Due date and Time</span>
+                        <input 
+                            class="todo-section-input" 
+                            id="todo-date" 
+                            name="date" 
+                            type="datetime-local" 
+                            required>
+                    </label>
+
+                    <!--Submit Button-->
+                    <button class="todo-section-button" id="add-button" type="submit">Add Task</button>
+
+                    </form>
+
+                </section>
+
+                <!--To do table-->
+                <table id="todo-table" aria-label="To-do tasks table">
+
+                <!--Table head-->
+                <thead>
+                    <tr>
+                        <th scope="col"></th> <!--Completion-->
+                        <th scope="col">Task</th> <!--Task Name-->
+                        <th scope="col">Due Date</th> <!--Due date-->
+                        <th scope="col">Status</th> <!--Status-->
+                    </tr>
+                </thead>
+
+                <!--Body, handled by Todo.js-->
+                <tbody id="todo-table-body"></tbody>
+            </table>   
+
+             </section>
+            
+
+
+
+
+             <!--Edit / Attach Section-->
+             <section class="task-detail texture" id="task-detail" aria-labelledby="task-detail-heading">
+
+                <!--Click Task Message, Shows when empty-->
+                <div id="task-detail-empty">
+                    <center>
+                        <img 
+                        src="assets/SelectTask.png" 
+                        width="450" 
+                        height="300" 
+                        alt="To-do">
+                    </center>
+                    <center>
+                        <h2>Select a task to view and edit details</h2>
+                    </center>
+                </div>
+
+                <!--Main Edit Menu, Shows when something is selected.-->
+                <form id="task-edit-form" hidden>
+
+                <!--Title-->
+                <textarea 
+                    id="load-title" 
+                    class="task-title-input" 
+                    name="title" 
+                    rows="2" 
+                    placeholder="Task title" 
+                    required>
+                </textarea>
+
+                <!--Date-->
+                <input 
+                    id="load-date" 
+                    class="task-date-input" 
+                    name="date" 
+                    type="datetime-local" 
+                    required>
+
+                <!--Description-->
+                <textarea 
+                    id="load-description" 
+                    class="task-description-input" 
+                    name="description" 
+                    rows="4" 
+                    placeholder="Add details about this task">
+                </textarea>
+
+                <!--Task Complete Section-->
+                <label 
+                    class="task-completed-label" 
+                    for="load-completed">
+
+                        <input id="load-completed" name="completed" type="checkbox">
+                         Mark as Completed
+
+                </label> 
+
+                <hr class="settings-divider">
+
+                <!--Task Attachments Subsection-->
+                <div class="task-attachments">
+                    <label for="task-attachment-input">Attachments</label>
+
+                    <!--Attachment Input-->
+                    <input id="task-attachment-input" type="file" multiple>
+                    <ul id="task-attachment-list" aria-label="Task attachments"></ul>
+
+                </div>
+
+                <!--Action Buttons-->
+                <div class="task-detail-actions">
+                    <button class="importantButton" id="save-task-button" type="submit">Save</button>
+                    <button class="unimportantButton" id="cancel-task-button" type="button">Cancel</button>
+                    <button class="unimportantButton" id="delete-task-button" type="button">Delete</button>
+                </div>
+
+                <!--Task Status-->
+                <p id="taskStatus" class="status" role="status" aria-live="polite"></p>
+                
+                </form>
+
+            </section>  
+
+        </main>
+
+    </div>
+    
 </body>
+
+<!--Delete Confirmation-->
+<dialog class="BadConfirmation" id="DeleteConfirmation">
+
+    <center><h2>Are you sure you want to delete this task?</h2></center>
+    <center><p><b>This is not reversable!</b></p></center>
+
+    <div class="confirmation-actions">
+        <button class="unimportantButton" id="noDelete" type="button">No</button>
+        <button class="dangerButton" id="yesDelete" type="button">Yes, delete</button>
+    </div>
+
+</dialog>
+
 <script>
+    //Background stuff
     const savedColor = localStorage.getItem("backgroundColor");
     const savedWallpaper = localStorage.getItem("mosaic-wallpaper");
     const wallpaperLayer = document.getElementById("wallpaper-layer");
     const wallpaperBlurred = localStorage.getItem("mosaic-wallpaper-blur") === "true";
+
+    //If the saved color is not null, set the background color with the saved color.
     if (savedColor !== null) {
         document.documentElement.style.setProperty(
             "--background-color",
@@ -159,9 +262,13 @@
         );
     }
 
+    //if the wallpaper is not null, set that wallpaper.
     if (savedWallpaper !== null) {
         wallpaperLayer.style.backgroundImage = `url("${savedWallpaper}")`;
     }
+
+    //then toggle that wallpaper on.
     wallpaperLayer.classList.toggle("wallpaper-blurred", wallpaperBlurred);
 </script>
+
 </html>
