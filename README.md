@@ -1,7 +1,7 @@
 ![Banner Image](assets/banner.png)
 
 
-Mosaic
+# Mosaic
 
 Made by Joshua Singson
 
@@ -11,7 +11,7 @@ Productivity, Task Management
 Project Description:
 Mosaic is a **to-do list web application** that utilises **LocalStorage and IndexedDB** to store configuration, task and attachment data. It's made to store user task in-device with personalisation capabilities. 
 
-Features:
+## Features:
 - Add, remove or modify tasks
 - See Task Status based on date collected
 - Live per-minute task updates (for updating tasks status from due today -> overdue)
@@ -21,20 +21,19 @@ Features:
 - Add wallpaper + wallpaper blur
 - Import and export user data for portability and safe keeping
 
-Technologies Used:
+## Technologies Used:
 - Localhost and indexedDB
 - JSON
 - JavaScript
 - HTML and CSS
 - Google Fonts API
 
-Access it here:
+### Access it here:
 https://anythingbutausername.github.io/mosaic/settings.html
 
 
 
----- More details below! ----
-
+## More Details!
 
 It has 5 modules:
 - Settings.js handles wallpaper and background color customisation. 
