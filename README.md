@@ -23,6 +23,9 @@ As of version 0.1:
 - Add wallpaper + wallpaper blur
 - Import and export user data for portability and safe keeping
 
+0.2 is coming this Q4 2026. Here's a preview of what's being in development:
+https://github.com/anythingbutausername/mosaic/wiki/Versions
+
 ## Technologies Used:
 - LocalStorage and indexedDB
 - JSON
