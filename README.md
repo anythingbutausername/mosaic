@@ -1,15 +1,11 @@
 ![Banner Image](assets/banner.png)
 
 
-# Mosaic
+# Mosaic 
+by JJDS
 
-Made by Joshua Singson
-
-Category: 
-Productivity, Task Management
-
-Project Description:
 Mosaic is a **to-do list web application** that utilises **LocalStorage and IndexedDB** to store configuration, task and attachment data. It's made to store user task in-device with personalisation capabilities. 
+Although originally made for my Integrative Programming final project, this is also a part of my greater long-term initiative to implement technology solutions alongside my passions, which includes UI design (albeit imperfect). Because of that, expect this project to further evolve in the future. 
 
 ## Features:
 - Add, remove or modify tasks
@@ -28,22 +24,9 @@ Mosaic is a **to-do list web application** that utilises **LocalStorage and Inde
 - HTML and CSS
 - Google Fonts API
 
-## IPT Lessons Used
-- DOM
-- Async functions
-- Set Timeouts
-- Try-catch-finally
-- Promises
-- Lots and lots of event handling
-
-The project also has:
-- Forms
-- Validations
-- Buttons and Event Handling
-- Dynamic Content for attachment lists, task status, image previews, list tabs and wallpaper implementation
-
 ### Access it here:
 https://anythingbutausername.github.io/mosaic/settings.html
+
 
 
 
@@ -68,9 +51,5 @@ It has 5 modules:
 - Assets store my very own designed logos and icons
 
 The code provided offers a more complete (yet imperfect) description of how methods work. 
-
-Although originally made for my Integrative Programming final project, this is also a part of my greater long-term initiative to implement technology solutions alongside my passions, which includes UI design (albeit imperfect). Because of that, expect this project to further evolve in the future. 
-
-Version: 0.1 /// Version 0.2 coming Q4 2026
 
 Thanks for reading!
