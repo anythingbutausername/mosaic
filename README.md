@@ -5,7 +5,11 @@
 by JJDS
 
 Mosaic is a **to-do list web application** that utilises **LocalStorage and IndexedDB** to store configuration, task and attachment data. It's made to store user task in-device with personalisation capabilities. 
+
 Although originally made for my Integrative Programming final project, this is also a part of my greater long-term initiative to implement technology solutions alongside my passions, which includes UI design (albeit imperfect). Because of that, expect this project to further evolve in the future. 
+
+### Access it here:
+https://anythingbutausername.github.io/mosaic/settings.html
 
 ## Features:
 - Add, remove or modify tasks
@@ -23,12 +27,6 @@ Although originally made for my Integrative Programming final project, this is a
 - JavaScript
 - HTML and CSS
 - Google Fonts API
-
-### Access it here:
-https://anythingbutausername.github.io/mosaic/settings.html
-
-
-
 
 ## More Details!
 
