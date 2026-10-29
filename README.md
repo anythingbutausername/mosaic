@@ -12,6 +12,8 @@ Although originally made for my Integrative Programming final project, this is a
 https://anythingbutausername.github.io/mosaic/settings.html
 
 ## Features:
+As of version 0.1:
+
 - Add, remove or modify tasks
 - See Task Status based on date collected
 - Live per-minute task updates (for updating tasks status from due today -> overdue)
